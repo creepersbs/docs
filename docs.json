@@ -31,7 +31,11 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/creepersbs/register"
+      "github": "https://github.com/creepersbs/register",
+      "x": "https://x.com/creeperhubnet",
+      "discord": "https://creepers.sbs/discord",
+      "bluesky": "https://bsky.app/profile/creepers.sbs",
+      "website": "https://creepers.sbs"
     }
   },
   "navigation": {
@@ -85,5 +89,25 @@
       }
     ]
   },
-  "description": "Official creepers.sbs Documentation, find out how to register your subdomain"
+  "description": "Official creepers.sbs Documentation, find out how to register your subdomain",
+  "banner": {
+    "content": "Register yours nowww :) [Click me](https://github.com/creepersbs/register)",
+    "type": "info"
+  },
+  "redirects": [
+    {
+      "source": "/discord",
+      "destination": "https://creepers.sbs/discord",
+      "permanent": true
+    }
+  ],
+  "interaction": {
+    "drilldown": false
+  },
+  "seo": {
+    "indexing": "navigable"
+  },
+  "markdown": {
+    "schema": true
+  }
 }

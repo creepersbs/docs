@@ -1,9 +1,9 @@
 ---
-title: "How to register a subdomain on Creepers step by step"
+title: "How to register a subdomain on creepers.sbs step by step"
 description: "Fork the repo, create a JSON file with your DNS records, and open a Pull Request. Covers every required field and the PR checklist for first-time registrations."
 ---
 
-Registering a subdomain on Creepers is entirely GitHub-based. You fork the repository, add a single JSON file to the `/domains` folder describing your project and DNS records, then open a Pull Request. A CreeperHUB team member reviews it manually, and once merged, your subdomain is live. There is no web panel or account to create — GitHub is the interface.
+Registering a subdomain on creepers.sbs is entirely GitHub-based. You fork the repository, add a single JSON file to the `/domains` folder describing your project and DNS records, then open a Pull Request. A CreeperHUB team member reviews it manually, and once merged, your subdomain is live. There is no web panel or account to create — GitHub is the interface.
 
 ## The JSON file structure
 
@@ -14,7 +14,7 @@ Below is a walkthrough of every field in the template.
 ### Top-level fields
 
 | Field | Required | Description |
-|---|---|---|
+| --- | --- | --- |
 | `title` | Yes | The name of your website, project, or server. |
 | `description` | Yes | A short summary of what the subdomain is for. |
 | `domain` | Yes | The TLD you are registering under. Choose one: `creepers.sbs`, `creepers.cloud`, `creepers.pro`, `creepers.lol`, or `run-it.tech`. |
@@ -27,7 +27,7 @@ Below is a walkthrough of every field in the template.
 The `owner` block identifies who owns the subdomain. This information is used to contact you if action needs to be taken on your subdomain.
 
 | Field | Required | Description |
-|---|---|---|
+| --- | --- | --- |
 | `github_user` | Yes | The full URL to your GitHub profile (e.g., `https://github.com/yourusername`). Must be the account submitting the PR. |
 | `email` | Yes | An email address where you can be reached for service-related notices. |
 | `discord` | No | Your Discord username (e.g., `@yourusername`). Required if you ever need to transfer the subdomain. You must be a member of the official CreeperHUB Discord server. |
@@ -70,7 +70,6 @@ The following is a filled-in JSON file for a developer portfolio site on `creepe
   <Step title="Fork and star the repository">
     Go to [creepersbs/register](https://github.com/creepersbs/register) on GitHub. Star the repo to follow updates, then fork it to create your own copy.
   </Step>
-
   <Step title="Add your JSON file">
     In your fork, navigate to the `/domains` folder and create your file. Name it exactly after your desired subdomain — `yourname.json` for `yourname.creepers.sbs`. Paste in your filled-out JSON and remove all parenthetical comments from the template so the file is valid JSON.
 
@@ -78,7 +77,6 @@ The following is a filled-in JSON file for a developer portfolio site on `creepe
       Creepers enforces a **Zero-Manual-Fix Policy**. If your file has syntax errors, misplaced fields, or is in the wrong directory, your PR will be rejected and you will need to fix and resubmit it yourself. Use [JSONLint](https://jsonlint.com/) to validate before submitting.
     </Warning>
   </Step>
-
   <Step title="Open the Pull Request">
     In your fork, click **Contribute** then **Open Pull Request**. The PR description will be pre-filled with the official template. Fill in every required section:
 
@@ -90,7 +88,6 @@ The following is a filled-in JSON file for a developer portfolio site on `creepe
 
     All three confirmation checkboxes must be checked before the PR can be reviewed.
   </Step>
-
   <Step title="Wait for review">
     A CreeperHUB team member will review your PR manually. Approval typically takes **24 hours to one week**. Once merged, your subdomain is live.
 
@@ -104,12 +101,15 @@ The following is a filled-in JSON file for a developer portfolio site on `creepe
   <Card title="File name matches subdomain" icon="file">
     `yourname.json` must contain `"subdomain": "yourname"` — any mismatch will result in rejection.
   </Card>
+
   <Card title="Valid JSON" icon="code">
     Remove all parenthetical comments from the template. Validate with [JSONLint](https://jsonlint.com/) before opening the PR.
   </Card>
+
   <Card title="File is in /domains" icon="folder">
     The file must be directly inside `/domains`, not in a subfolder. Incorrect placement will not be corrected by the team.
   </Card>
+
   <Card title="Service is live" icon="globe">
     Your subdomain must point to a real, reachable service — not a placeholder IP or localhost.
   </Card>

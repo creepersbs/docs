@@ -1,9 +1,9 @@
 ---
-title: "DNS record types supported in Creepers registrations"
-description: "Reference for every DNS record type in your Creepers registration file: A, AAAA, CNAME, MX, NS, TXT, and SRV — with JSON examples and usage guidance."
+title: "DNS record types supported in creepers.sbs registrations"
+description: "Reference for every DNS record type in your creepers.sbs registration file: A, AAAA, CNAME, MX, NS, TXT, and SRV — with JSON examples and usage guidance."
 ---
 
-Creepers supports seven DNS record types in the `"record"` object of your registration file: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, and `SRV`. You only need to include the types relevant to your use case — leave out any you do not need. Each type has a specific value format described below.
+[creepers.sbs](http://creepers.sbs) supports seven DNS record types in the `"record"` object of your registration file: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, and `SRV`. You only need to include the types relevant to your use case — leave out any you do not need. Each type has a specific value format described below.
 
 ## A — IPv4 address
 
@@ -84,7 +84,7 @@ An `SRV` record advertises the location of a specific service running on your su
 Each SRV entry has the following fields:
 
 | Field | Description |
-|---|---|
+| --- | --- |
 | `content` | The service and protocol identifier (e.g., `_minecraft._tcp`). |
 | `priority` | Lower values are preferred when multiple SRV records exist. |
 | `weight` | Used to distribute load among records with the same priority. |
@@ -123,12 +123,15 @@ Each SRV entry has the following fields:
   <Card title="Website or web app" icon="globe">
     Use `A` or `AAAA` for servers you control directly, or `CNAME` for platforms like Netlify, Vercel, or GitHub Pages. Enable `"proxy": "true"` for HTTP/HTTPS traffic.
   </Card>
+
   <Card title="Minecraft or game server" icon="server">
     Use `SRV` to advertise your server with a clean domain, paired with an `A` record. Set `"proxy": "false"`.
   </Card>
+
   <Card title="Email" icon="mail">
     Use `MX` records pointing to your mail provider's servers. Set `"proxy": "false"`.
   </Card>
+
   <Card title="Self-managed DNS" icon="settings">
     Use `NS` records to delegate the zone to your own provider. The proxy is bypassed automatically.
   </Card>

@@ -1,5 +1,5 @@
 ---
-title: "Spare records: create nested subdomains in Creepers"
+title: "Spare records: create nested subdomains in creepers.sbs"
 description: "Spare records add DNS entries under your subdomain — like mc.yourname.creepers.sbs or docs.yourname.creepers.sbs — all configured in the same registration file."
 ---
 
@@ -57,7 +57,7 @@ The following is a complete registration file for a developer using spare record
 This file produces the following DNS entries:
 
 | Subdomain | Type | Target |
-|---|---|---|
+| --- | --- | --- |
 | `devsetup.creepers.sbs` | A | `198.51.100.10` |
 | `mc.devsetup.creepers.sbs` | A | `198.51.100.50` |
 | `docs.devsetup.creepers.sbs` | CNAME | `devsetup.github.io` |
