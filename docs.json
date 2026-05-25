@@ -91,8 +91,12 @@
   },
   "description": "Official creepers.sbs Documentation, find out how to register your subdomain",
   "banner": {
-    "content": "Register yours nowww :) [Click me](https://github.com/creepersbs/register)",
-    "type": "info"
+    "content": "New Documentationnnnn :0",
+    "type": "info",
+    "color": {
+      "light": "#055121",
+      "dark": "#033515"
+    }
   },
   "redirects": [
     {
