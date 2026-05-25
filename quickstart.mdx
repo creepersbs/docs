@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: register your first Creepers subdomain"
-description: "Step-by-step guide to registering a free subdomain on Creepers: fork the repo, add a JSON file with your DNS records, and open a Pull Request."
+title: "Quickstart: register your first creepers.sbs subdomain"
+description: "Step-by-step guide to registering a free subdomain on creepers.sbs: fork the repo, add a JSON file with your DNS records, and open a Pull Request."
 ---
 
 This guide walks you through registering a subdomain from start to finish. The entire process happens on GitHub: you add a JSON file describing your DNS records and open a Pull Request for review. No account signup, no payment details.
@@ -11,7 +11,6 @@ This guide walks you through registering a subdomain from start to finish. The e
 
     You will make all your changes in your fork and then open a Pull Request back to the main repository.
   </Step>
-
   <Step title="Create your domain file">
     In your fork, navigate to the `/domains` folder and create a new file. The file name must exactly match the subdomain you want — for example, if you want `myproject.creepers.sbs`, create `myproject.json`.
 
@@ -39,7 +38,7 @@ This guide walks you through registering a subdomain from start to finish. The e
 
     **Key fields explained:**
 
-    - `"domain"` — choose one of the available TLDs: `creepers.sbs`, `creepers.cloud`, `creepers.pro`, `creepers.lol`, or `run-it.tech`.
+    - `"domain"` — choose one of the available TLDs: `creepers.sbs`, `creepers.cloud`, `creepers.pro`, `creepers.lol`, and any other future domain.
     - `"subdomain"` — must match the file name exactly (without `.json`).
     - `"country_code"` — set to `"none"` unless you need a regional sub-prefix (e.g., `en.yourname.creepers.sbs`). Currently used as additional metadata.
     - `"record"` — include only the record types you need. Supported types: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, `SRV`.
@@ -53,24 +52,22 @@ This guide walks you through registering a subdomain from start to finish. The e
       Cloudflare proxy (`"proxy": "true"`) does not work with services hosted on another Cloudflare account or Cloudflare Workers. Use `"proxy": "false"` for those.
     </Note>
   </Step>
-
   <Step title="Validate your JSON">
     Before opening a Pull Request, paste your file contents into [JSONLint](https://jsonlint.com/) and confirm it shows **Valid JSON**. A single misplaced comma or missing quote will cause your PR to be rejected.
 
     <Warning>
-      Creepers enforces a **Zero-Manual-Fix Policy**. If your JSON has syntax errors, your PR will be rejected and you will need to fix it yourself and resubmit. The team will not correct formatting on your behalf.
+      [creepers.sbs](http://creepers.sbs) enforces a **Zero-Manual-Fix Policy**. If your JSON has syntax errors, your PR will be rejected and you will need to fix it yourself and resubmit. The team will not correct formatting on your behalf.
     </Warning>
   </Step>
-
   <Step title="Open a Pull Request">
     In your fork on GitHub, click **Contribute** then **Open Pull Request**. Fill in the PR description using the provided template, check all boxes in the checklist, and confirm you agree to the [Terms of Service](/policies/terms-of-service).
 
     Make sure:
+
     - Your JSON file is in the `/domains` folder (not in a subfolder).
     - The file name matches your `"subdomain"` value exactly.
     - You are not pointing to placeholder IPs (`1.1.1.1`, `0.0.0.0`, `localhost`) — your service must be live and reachable.
   </Step>
-
   <Step title="Wait for approval">
     A CreeperHUB team member will review your PR manually. Approval typically happens within **24 hours to one week**. Once merged, your subdomain is live.
 

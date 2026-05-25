@@ -1,5 +1,3 @@
-# creepers.sbs - The documentation 
-The official creepers.sbs Documentation made by [**`@Giocoliere`**](https://github.com/giocoliere) / [**`@creeperhub`**](https://github.com/creeperhub) <br>
-[![img](https://custom-icon-badges.demolab.com/badge/powered_by-CreeperHUB-white.svg?logo=creeperhub&logoColor=white)](https://creeperhub.net)
+# creepers.sbs - The documentation
 
 ### Powered by [Mintlify](https://mintlify.com/)

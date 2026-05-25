@@ -10,13 +10,24 @@
   "favicon": "https://media.brand.dev/f2886f7a-9caa-40e7-bfd1-88a5bfb229fa.png",
   "logo": {
     "light": "https://media.brand.dev/6c1276f4-2d55-462e-96b2-cc18b14046f5.svg",
-    "dark": "https://media.brand.dev/6c1276f4-2d55-462e-96b2-cc18b14046f5.svg"
+    "dark": "https://media.brand.dev/6c1276f4-2d55-462e-96b2-cc18b14046f5.svg",
+    "href": "https://creepers.sbs"
   },
   "navbar": {
     "primary": {
       "type": "github",
       "href": "https://github.com/creepersbs/register"
-    }
+    },
+    "links": [
+      {
+        "href": "https://creepers.sbs",
+        "label": "Home"
+      },
+      {
+        "href": "https://creeperhub.net",
+        "label": "CreeperHUB"
+      }
+    ]
   },
   "footer": {
     "socials": {
@@ -73,5 +84,6 @@
         ]
       }
     ]
-  }
+  },
+  "description": "Official creepers.sbs Documentation, find out how to register your subdomain"
 }
