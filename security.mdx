@@ -1,0 +1,60 @@
+---
+title: "Restricted and reserved names on Creepers subdomains"
+description: "Names unavailable for root registration: country codes, Minecraft/staff terms, official system names, and social media impersonation are prohibited on all TLDs."
+---
+
+Not every name is available for registration. CH maintains a list of restricted and reserved terms to prevent impersonation, confusion with official services, and misuse of the registry. If your requested name falls into any of the categories below, your PR may be rejected or removed — without prior notice.
+
+<Warning>
+  CH reserves the right to update the restricted names list at any time without prior notice. A name that was available yesterday may be reserved tomorrow. Always check before submitting a request.
+</Warning>
+
+## Restricted categories
+
+<AccordionGroup>
+  <Accordion title="Country and continent codes" icon="globe">
+    You cannot register a country or continent code as a **root** subdomain (e.g., `en.creepers.sbs`, `eu.creepers.sbs`, `us.creepers.cloud`).
+
+    These codes are reserved for potential future regional use.
+
+    **Nested use is allowed.** For example, `anything.en.creepers.sbs` is permitted as long as the root subdomain (`anything`) is not itself restricted.
+  </Accordion>
+
+  <Accordion title="Shop, store, and ecommerce names" icon="shopping-cart">
+    Names that imply an official shop, store, or ecommerce presence associated with creepers.sbs or CH are prohibited. This includes terms that would make a casual visitor believe they are interacting with an official commercial service.
+  </Accordion>
+
+  <Accordion title="Official Minecraft and staff mimicry" icon="server">
+    Because there are currently **no official creepers.sbs Minecraft servers**, names that imply official server status are prohibited as root subdomains. Restricted terms include:
+
+    `mc` · `play` · `smp` · `network` · `bedwars` · `staff` · `admin`
+
+    **Nested use is allowed.** For example, `mc.yourserver.creepers.sbs` is permitted — the restriction applies only to registering `mc.creepers.sbs` directly.
+  </Accordion>
+
+  <Accordion title="Official and system-related names" icon="settings">
+    Names that could be mistaken for official CH system services are reserved. These include (but are not limited to):
+
+    `about` · `status` · `whois` · `translate`
+
+    Similar terms that imply infrastructure, tooling, or official registry operation fall under this category as well.
+  </Accordion>
+
+  <Accordion title="Names in the reserved list" icon="list">
+    CH maintains a full list of explicitly reserved domain names. You must check this list before submitting a request.
+
+    [View the reserved names list on GitHub](https://github.com/creepersbs/register/tree/main/domains/reserved/list.json)
+
+    This list is updated without notice. If a name you registered later appears on the reserved list, it may be subject to removal.
+  </Accordion>
+
+  <Accordion title="Social media impersonation" icon="users">
+    Names that could be mistaken for official creepers.sbs or CreeperHUB social media accounts are prohibited. This includes variations of account names CH uses or could reasonably use on any platform.
+  </Accordion>
+</AccordionGroup>
+
+## What happens if you violate these rules
+
+Requests for restricted names are rejected outright. If a restricted name is discovered after registration (for example, because the reserved list was updated), CH may remove the subdomain without prior notice or appeal.
+
+Repeated violations may result in account review and potential blacklisting. See [Takedowns & Blacklisting](/policies/takedowns-and-blacklisting) for details on what happens after a removal.

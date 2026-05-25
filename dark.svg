@@ -1,0 +1,52 @@
+---
+title: "Update the DNS records for your Creepers subdomain"
+description: "Edit your registration JSON file and open a new Pull Request to update DNS records. Includes steps for syncing your fork and re-confirming the Terms of Service."
+---
+
+Updating your subdomain's DNS records works the same way as the original registration: you edit your JSON file and open a new Pull Request against the `creepersbs/register` repository. There is no web panel — every change must go through GitHub. Once your PR is merged, the updated records go live within the normal review window.
+
+<Steps>
+  <Step title="Fork or sync your fork">
+    If you already have a fork of `creepersbs/register`, sync it with the latest `main` branch before making changes. Out-of-date forks can cause merge conflicts that delay your PR.
+
+    On GitHub, open your fork and click **Sync fork** → **Update branch** to pull in the latest changes.
+  </Step>
+
+  <Step title="Edit your existing JSON file">
+    Navigate to the `/domains` folder in your fork and open your existing registration file (e.g., `yourname.json`). Update the record values you want to change — for example, a new IP address in the `"A"` field, or an updated `"TXT"` entry.
+
+    Do not rename the file or change the `"subdomain"` value. Only update the fields that need to change.
+
+    <Tip>
+      Changing your `"proxy"` field between `"true"` and `"false"` also requires a PR update. Include the new value in the same edit.
+    </Tip>
+  </Step>
+
+  <Step title="Validate with JSONLint">
+    Before opening the PR, paste your updated file into [JSONLint](https://jsonlint.com/) and confirm it returns **Valid JSON**. A single misplaced comma or missing bracket will cause your PR to be rejected.
+
+    <Warning>
+      Creepers enforces a **Zero-Manual-Fix Policy**. If your JSON is invalid, your PR will be rejected outright — it will not be corrected by the team. You must fix the error and resubmit.
+    </Warning>
+  </Step>
+
+  <Step title="Open a Pull Request">
+    In your fork, click **Contribute** → **Open Pull Request**. The PR description will be pre-filled with the official template. Fill it in as follows:
+
+    - **Type of PR** — check **Update / Change DNS Records**
+    - **Your information** — GitHub username and email
+    - **Subdomain request details** — the subdomain you are updating
+    - **Description** — briefly describe what you are changing and why
+    - **Confirmation checkboxes** — all three must be checked
+
+    If you are updating **NS records specifically**, select **Change NS records** instead of "Update / Change DNS Records".
+
+    <Note>
+      As of the **04-17-2026** Terms of Service update, you must re-confirm the Terms of Service on every PR submission. All three confirmation checkboxes in the template must be checked before your PR can be reviewed.
+    </Note>
+  </Step>
+
+  <Step title="Wait for review and merge">
+    A CreeperHUB team member will review your PR manually. Once merged, your updated DNS records go live. Review time is typically 24 hours to one week.
+  </Step>
+</Steps>

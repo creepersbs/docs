@@ -1,0 +1,95 @@
+---
+title: "Terms of Service for the Creepers subdomain registry"
+description: "Terms governing Creepers subdomain registration. Covers acceptance, Zero-Manual-Fix Policy, user responsibilities, removal conditions, and service disclaimer."
+---
+
+By submitting any Pull Request, Issue, or other request in the [creepersbs/register](https://github.com/creepersbs/register) repository, you explicitly confirm that you have read, understood, and agree to these Terms of Service. Acceptance is required every time a PR is submitted or updated. If you do not agree, do not submit a request.
+
+<Note>
+  This page is a plain-English summary of the authoritative Terms of Service. For the binding, canonical version, refer to [TERMS.md on GitHub](https://github.com/creepersbs/register/blob/main/TERMS.md).
+</Note>
+
+## Acceptance of terms
+
+You accept these Terms every time you submit or update a Pull Request — not just on your first registration. The checkmark confirmation in the PR template is mandatory and carries legal weight. There are no exceptions.
+
+## Relationship with the MIT License
+
+The source code in this repository is licensed under the MIT License. That license applies **only to the code itself** — it does not grant you any right to use the `creepers.sbs`, `creepers.cloud`, `creepers.pro`, or `creepers.lol` services, domains, or infrastructure. Use of the service is governed exclusively by these Terms.
+
+## Service description
+
+Creepers is a free subdomain registry operated by **CreeperHUB / Giocoliere** (referred to as "CH"). Subdomains are requested via GitHub Pull Requests, reviewed manually, and approved at the sole discretion of CH. Once approved, you receive control of the DNS records associated with your subdomain, including the option to use custom Name Server (NS) records.
+
+## Request process
+
+<AccordionGroup>
+  <Accordion title="Templates and formatting">
+    All requests must use the official templates:
+
+    - **Single TLD:** [`domains/template.json`](https://github.com/creepersbs/register/blob/main/domains/template.json)
+    - **All TLDs at once:** [`domains/complete.template.json`](https://github.com/creepersbs/register/blob/main/domains/complete.template.json)
+
+    Requests that do not follow the templates, or that contain false or incomplete information, may be rejected without explanation.
+  </Accordion>
+
+  <Accordion title="Zero-Manual-Fix Policy">
+    CH enforces a strict **Zero-Manual-Fix Policy**. You are solely responsible for ensuring your PR is correctly formatted before submission:
+
+    - **JSON must be valid.** Syntax errors will cause your PR to be rejected or deferred until you fix them yourself — staff will not correct them for you.
+    - **Files must be in the correct directory.** Staff will no longer move or rename files on your behalf.
+    - **No placeholder targets.** Requests must point to an already existing, functional service. Pointing to `localhost`, `test`, `1.1.1.1`, `0.0.0.0`, or similar placeholder addresses is strictly forbidden.
+
+    If you have questions before submitting, [open an issue](https://github.com/creepersbs/register/issues/new).
+  </Accordion>
+</AccordionGroup>
+
+## Your responsibilities
+
+You are solely responsible for:
+
+- DNS configuration and ongoing management
+- All content hosted on your subdomain
+- Every website, service, application, or server reachable through the subdomain
+- Compliance with all applicable laws and regulations
+
+CH assumes **no responsibility** for abuse, illegal activity, DNS misconfiguration, downtime, data loss, reputational damage, or any other consequence arising from your use of the subdomain.
+
+## DNS and Name Server usage
+
+If you request or configure custom NS records, you take on full management of your DNS zone through your own provider. CH has no technical control over your DNS configuration once NS records are delegated. Any misuse, error, or violation remains entirely your responsibility. CH reserves the right to revoke a subdomain if your DNS usage violates these Terms.
+
+## Removal and takedown conditions
+
+CH may suspend or remove any subdomain if:
+
+- These Terms are violated
+- False or misleading information was provided during registration
+- The GitHub account or repository used for registration is deleted
+- The subdomain is involved in abuse, scams, phishing, malware, or illegal activity
+- A verified third party submits a valid takedown request
+
+See [Takedowns & Blacklisting](/policies/takedowns-and-blacklisting) for the full process and third-party verification requirements.
+
+## Domain lifecycle
+
+Subdomains are reserved **indefinitely** unless removed by CH or transferred by you. If you need to transfer a subdomain to another user or organization, contact CH via:
+
+- **Email:** [hello@creeperhub.net](mailto:hello@creeperhub.net)
+- **Discord:** [creepers.sbs/discord](https://creepers.sbs/discord)
+
+To complete a transfer, you must be a member of the official Discord server and have your Discord username listed in your registration file.
+
+## Blacklisting
+
+Domains that are removed for serious violations are placed in the `/blacklisted` folder and cannot be reregistered by anyone.
+
+## Disclaimer
+
+<Warning>
+  This service is provided **"as is"**, without warranties of any kind. CH reserves the right to modify these Terms at any time, and to refuse, suspend, or revoke service without prior notice. Continued use of the service after a Terms update constitutes your acceptance of the updated Terms.
+</Warning>
+
+---
+
+**Last updated:** 04-17-2026

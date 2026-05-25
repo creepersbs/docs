@@ -1,0 +1,94 @@
+---
+title: "Spare records: create nested subdomains in Creepers"
+description: "Spare records add DNS entries under your subdomain — like mc.yourname.creepers.sbs or docs.yourname.creepers.sbs — all configured in the same registration file."
+---
+
+When you register `yourname.creepers.sbs`, you get exactly that subdomain. Spare records let you go further — they create additional DNS entries that live under your subdomain, such as `mc.yourname.creepers.sbs` or `docs.yourname.creepers.sbs`. You define them inside the `"record"` object of your registration file, alongside your main DNS records.
+
+## How spare records work
+
+A spare record is an array with three elements:
+
+1. **Subdomain prefix** — the label to prepend to your registered subdomain (e.g., `"mc"` creates `mc.yourname.creepers.sbs`).
+2. **Record type** — any supported DNS record type: `A`, `AAAA`, `CNAME`, `MX`, etc.
+3. **Target** — the value the record points to (an IP address, hostname, etc.).
+
+The key name starts with `"spare_record"` and is incremented for each additional entry: `"spare_record"`, `"spare_record_2"`, `"spare_record_3"`, and so on. You can add as many as you need.
+
+```json
+"spare_record": ["mc", "A", "198.51.100.50"],
+"spare_record_2": ["docs", "CNAME", "yourname.github.io"],
+"spare_record_3": ["api", "A", "198.51.100.51"]
+```
+
+The example above, registered under the subdomain `yourname` on `creepers.sbs`, would create:
+
+- `mc.yourname.creepers.sbs` → A record pointing to `198.51.100.50`
+- `docs.yourname.creepers.sbs` → CNAME pointing to `yourname.github.io`
+- `api.yourname.creepers.sbs` → A record pointing to `198.51.100.51`
+
+## Full example with spare records
+
+The following is a complete registration file for a developer using spare records to separate their Minecraft server, documentation site, and API from their main web presence.
+
+```json devsetup.json
+{
+  "title": "Dev Setup",
+  "description": "Personal developer hub with a portfolio, Minecraft server, docs, and API.",
+  "domain": "creepers.sbs",
+  "subdomain": "devsetup",
+  "country_code": "none",
+  "owner": {
+    "github_user": "https://github.com/devsetup",
+    "email": "hello@devsetup.dev",
+    "discord": "@devsetup"
+  },
+  "record": {
+    "spare_record": ["mc", "A", "198.51.100.50"],
+    "spare_record_2": ["docs", "CNAME", "devsetup.github.io"],
+    "spare_record_3": ["api", "A", "198.51.100.51"],
+    "A": ["198.51.100.10"],
+    "TXT": ["google-site-verification=abc123xyz"]
+  },
+  "proxy": "true"
+}
+```
+
+This file produces the following DNS entries:
+
+| Subdomain | Type | Target |
+|---|---|---|
+| `devsetup.creepers.sbs` | A | `198.51.100.10` |
+| `mc.devsetup.creepers.sbs` | A | `198.51.100.50` |
+| `docs.devsetup.creepers.sbs` | CNAME | `devsetup.github.io` |
+| `api.devsetup.creepers.sbs` | A | `198.51.100.51` |
+| `devsetup.creepers.sbs` | TXT | `google-site-verification=abc123xyz` |
+
+## Spare records when registering multiple TLDs
+
+If you register across multiple TLDs using the complete template, spare records are scoped to the TLD section they appear in. The `"record"` block handles `creepers.sbs`, the `"record_2"` block handles `creepers.cloud`, and so on. Each block has its own independent set of spare records.
+
+```json
+"record": {
+  "spare_record": ["mc", "A", "198.51.100.50"],
+  "A": ["198.51.100.10"]
+},
+"proxy": "true",
+
+"domain_2": "creepers.cloud",
+"record_2": {
+  "spare_record": ["status", "CNAME", "status.devsetup.dev"],
+  "A": ["198.51.100.10"]
+},
+"proxy_2": "false"
+```
+
+In this example, `mc.devsetup.creepers.sbs` is created under `.sbs`, while `status.devsetup.creepers.cloud` is created under `.cloud` — they are completely independent.
+
+<Note>
+  Spare record prefixes follow the same naming restrictions as top-level subdomains. Reserved names such as `mc`, `play`, `admin`, and country codes are not allowed as root subdomains, but they are allowed as spare record prefixes under your own subdomain (e.g., `mc.yourname.creepers.sbs` is fine).
+</Note>
+
+<Tip>
+  You can use spare records to solve the `CNAME` limitation — if you need a `CNAME` for your main subdomain but also want an `MX` record, put the `CNAME` as a spare record on a different prefix, keeping the main subdomain free for the `MX`.
+</Tip>

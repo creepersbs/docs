@@ -1,0 +1,83 @@
+---
+title: "Subdomain takedowns, DMCA requests, and blacklisting"
+description: "How CreeperHUB handles subdomain removals, what makes a valid third-party takedown request, the transparency ledger format, and what blacklisting prevents."
+---
+
+CH may remove any registered subdomain at any time and for any reason within the scope of these policies. This page explains what triggers a takedown, how third-party requests are evaluated, and what happens to a domain after it is removed.
+
+<Warning>
+  CH reserves the right to refuse, suspend, or revoke service at any time without prior notice.
+</Warning>
+
+## Conditions for removal by CH
+
+A subdomain may be suspended or removed if any of the following apply:
+
+- The Terms of Service are violated
+- False or misleading information was provided during registration
+- The GitHub account or repository used for the registration is deleted
+- The subdomain is used for abuse, scams, phishing, malware distribution, or illegal activity
+- A verified third party submits a valid takedown request
+
+## Third-party takedown requests
+
+CH accepts takedown requests from outside parties under specific conditions. Anonymous, unverifiable, or frivolous requests are ignored without response.
+
+### Who can submit a request
+
+To be considered, the requesting party must be one of the following:
+
+<AccordionGroup>
+  <Accordion title="Copyright holder or authorized representative">
+    The legitimate copyright holder of the affected content or product, or a legally authorized representative acting on their behalf.
+  </Accordion>
+
+  <Accordion title="Notable individual, company, or organization">
+    A notable individual, company, or organization whose name, brand, or product is being abused or impersonated by the subdomain in question.
+  </Accordion>
+
+  <Accordion title="Recognized institution or authority">
+    A recognized institution or authority reporting a verified legal violation connected to the subdomain.
+  </Accordion>
+</AccordionGroup>
+
+### What you must provide
+
+A valid takedown request must include **clear and verifiable proof** of the violation. Depending on the nature of the request, this may include:
+
+- Evidence of copyright ownership or registered trademark rights
+- Documentation or public records proving your affiliation or legal standing
+- A clear explanation of how the subdomain violates your rights or these policies
+- Any additional information reasonably required by CH to evaluate the request
+
+Requests that cannot be verified, that appear frivolous or retaliatory, or that are submitted anonymously will be disregarded entirely. CH reserves the right to reject any request that does not meet these requirements.
+
+### How to submit
+
+For DMCA, high-risk, or sensitive takedown requests, contact the maintainer directly:
+
+<Card title="Contact @giocoliere on GitHub" icon="github" href="https://github.com/giocoliere">
+  For DMCA, legal, or sensitive takedown requests only. General support questions will not be answered through this channel.
+</Card>
+
+## Transparency ledger
+
+CH maintains a public record of all removed domains in the [`/removed` folder](https://github.com/creepersbs/register/edit/main/domains/removed) of the repository. Each entry in the ledger includes:
+
+| Field | Description |
+|-------|-------------|
+| Blacklisted name | The subdomain that was removed |
+| Previous owner | The GitHub account that held the registration |
+| Category | `TOS`, `DMCA`, or `OTHER` |
+| Requesting party | Who initiated the removal (CH or third party) |
+| Reason | A brief description of the violation |
+
+This ledger exists to provide accountability and transparency for the community.
+
+## Blacklisting
+
+Domains that are removed for violations are moved to the `/blacklisted` folder. A blacklisted domain **cannot be reregistered** by anyone — not even the original owner or a new party with a legitimate use case.
+
+<Info>
+  If you believe a domain was blacklisted in error, contact CH via [hello@creeperhub.net](mailto:hello@creeperhub.net) or the [official Discord server](https://creepers.sbs/discord). CH is not obligated to reinstate any blacklisted domain.
+</Info>

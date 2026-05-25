@@ -1,0 +1,63 @@
+---
+title: "Remove or release your Creepers subdomain voluntarily"
+description: "Release a subdomain via GitHub Issue, or learn how CreeperHUB removes domains for ToS violations, DMCA requests, and how the transparency ledger works."
+---
+
+There are two situations in which a subdomain is removed: you voluntarily give it up because you no longer need it, or CreeperHUB removes it due to a Terms of Service violation, a DMCA-style takedown, or verified abuse. Both outcomes are permanent — once a subdomain is removed, it may be blacklisted and become unavailable for future registration.
+
+## Voluntary removal
+
+If you no longer need your subdomain and want to release it, open a GitHub Issue in the `creepersbs/register` repository using the official issue template.
+
+<Steps>
+  <Step title="Open a GitHub Issue">
+    Go to [github.com/creepersbs/register/issues/new/choose](https://github.com/creepersbs/register/issues/new/choose) and select the **Subdomain Issue / Request** template.
+  </Step>
+
+  <Step title="Fill in the template">
+    Complete the issue form with the following:
+
+    - **Type of request** — select **Other** and note that this is a voluntary removal request
+    - **Your information** — your GitHub username and email address
+    - **Subdomain** — the full subdomain you want removed (e.g., `yourname.creepers.sbs`)
+    - **Detailed description** — confirm that you are the current owner and that you want the subdomain released
+    - **Confirmation checkboxes** — check both boxes before submitting
+  </Step>
+
+  <Step title="Wait for confirmation">
+    The CreeperHUB team will process the removal and close the issue once complete. The subdomain will be deleted from the `/domains` folder in the main repository.
+  </Step>
+</Steps>
+
+## Forced removal
+
+CreeperHUB may remove a subdomain without prior notice if it violates the Terms of Service, is involved in abuse or illegal activity, or is subject to a verified third-party takedown request. Grounds for forced removal include:
+
+- Violation of the Terms of Service
+- False or misleading registration information
+- Abuse, phishing, malware, or scam activity
+- A verified DMCA-style takedown from a legitimate rights holder
+
+<Note>
+  For high-risk security issues, DMCA requests, or takedown requests, contact [@giocoliere](https://github.com/giocoliere) directly on GitHub. For the full third-party takedown process, see [Takedowns and blacklisting](/policies/takedowns-and-blacklisting).
+</Note>
+
+## The transparency ledger
+
+All forced removals are recorded publicly in the `/removed` folder of the repository. Each entry in the ledger contains:
+
+- **Blacklisted name** — the domain name that was removed
+- **Previous owner** — the GitHub account that held the registration
+- **Category** — one of `TOS`, `DMCA`, or `OTHER`
+- **Requesting party** — who initiated the removal (CreeperHUB or a third party)
+- **Reason** — a brief explanation of the violation
+
+This ledger is maintained to ensure transparency around enforcement decisions.
+
+## Blacklisting
+
+Domains removed for violations are placed in the `/blacklisted` folder and cannot be registered again by any user. Voluntary removals may also be blacklisted at CreeperHUB's discretion.
+
+<Warning>
+  If your subdomain is removed due to a Terms of Service violation, you permanently lose any **legacy limit** you held (granted to users who registered before 02-24-2026). Your account reverts to the standard limit of 2 subdomains per TLD and the legacy allocation cannot be restored.
+</Warning>

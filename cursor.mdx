@@ -1,0 +1,58 @@
+---
+title: "Creepers: Free Subdomains for Developers and Gamers"
+description: "Register free subdomains under creepers.sbs, creepers.cloud, creepers.pro, creepers.lol, and run-it.tech. No fees, no credit cards — just a GitHub Pull Request."
+---
+
+Creepers is a free subdomain provider operated by [CreeperHUB](https://creeperhub.net), designed for developers, Minecraft players, and anyone who wants a personalized online presence. Registration happens entirely through GitHub — fork the repo, add a JSON file, open a pull request, and your subdomain goes live within 24 hours.
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Register your first subdomain in minutes with our step-by-step guide.
+  </Card>
+  <Card title="Available Domains" icon="globe" href="/available-domains">
+    Browse all supported TLDs and choose the right one for your project.
+  </Card>
+  <Card title="DNS Record Types" icon="server" href="/guides/dns-record-types">
+    Learn how to configure A, AAAA, CNAME, MX, NS, TXT, and SRV records.
+  </Card>
+  <Card title="Terms of Service" icon="file-contract" href="/policies/terms-of-service">
+    Understand the rules and responsibilities for using this service.
+  </Card>
+</CardGroup>
+
+## How it works
+
+Creepers uses GitHub as the registration interface. You submit your DNS configuration as a JSON file via Pull Request, it gets reviewed and merged by the CreeperHUB team, and your subdomain goes live — all for free.
+
+<Steps>
+  <Step title="Fork the repository">
+    Fork [creepersbs/register](https://github.com/creepersbs/register) on GitHub and star it to stay up to date.
+  </Step>
+  <Step title="Create your domain file">
+    Add a `.json` file to the `/domains` folder named after your desired subdomain (e.g., `myproject.json`). Use the provided templates to configure your DNS records.
+  </Step>
+  <Step title="Open a Pull Request">
+    Submit a Pull Request with your JSON file. Review the checklist, confirm you agree to the Terms of Service, and wait for approval.
+  </Step>
+  <Step title="Go live">
+    Once your PR is merged, your subdomain is live — usually within 24 hours to one week.
+  </Step>
+</Steps>
+
+## Who is this for?
+
+<CardGroup cols={3}>
+  <Card title="Developers" icon="code">
+    Showcase projects and APIs with a professional subdomain instead of a bare IP address.
+  </Card>
+  <Card title="Minecraft Players" icon="gamepad">
+    Point a friendly domain at your server's IP and SRV records so players connect easily.
+  </Card>
+  <Card title="Anyone" icon="user">
+    Personal sites, portfolios, side projects — if it's on the internet, it deserves a real domain name.
+  </Card>
+</CardGroup>
+
+<Note>
+  Subdomains are provided free of charge with no hidden fees. Up to **8 subdomains per account** (2 per TLD) are allowed. By submitting a request you agree to the [Terms of Service](/policies/terms-of-service).
+</Note>

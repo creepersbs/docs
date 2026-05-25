@@ -1,0 +1,135 @@
+---
+title: "DNS record types supported in Creepers registrations"
+description: "Reference for every DNS record type in your Creepers registration file: A, AAAA, CNAME, MX, NS, TXT, and SRV — with JSON examples and usage guidance."
+---
+
+Creepers supports seven DNS record types in the `"record"` object of your registration file: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, and `SRV`. You only need to include the types relevant to your use case — leave out any you do not need. Each type has a specific value format described below.
+
+## A — IPv4 address
+
+An `A` record maps your subdomain to one or more IPv4 addresses. The value is an array of strings, so you can list multiple IPs for basic load balancing or redundancy.
+
+```json
+"A": ["198.51.100.10", "198.51.100.11"]
+```
+
+## AAAA — IPv6 address
+
+An `AAAA` record maps your subdomain to one or more IPv6 addresses. Like `A`, the value is an array.
+
+```json
+"AAAA": ["2001:db8::1", "2001:db8::2"]
+```
+
+## CNAME — canonical name (alias)
+
+A `CNAME` record points your subdomain to another domain name instead of an IP address. The value is a single string, not an array.
+
+```json
+"CNAME": "myproject.netlify.app"
+```
+
+<Warning>
+  A `CNAME` cannot coexist with any other record type of the same name, except `TXT`. If you need both a `CNAME` and other record types (for example, a `CNAME` and an `MX`), use spare records for the additional entries. See the [spare records guide](/guides/spare-records).
+</Warning>
+
+<Warning>
+  A `CNAME` does not work when pointing to another Cloudflare account or a Cloudflare Worker. If your target is on another Cloudflare account, use a different regional subdomain (for example, `.eu.yourname.creepers.sbs`) with `"proxy": "false"` instead.
+</Warning>
+
+## MX — mail exchange
+
+An `MX` record specifies the mail servers responsible for receiving email for your subdomain. The value is an array of hostnames.
+
+```json
+"MX": ["mx1.yourmailprovider.com", "mx2.yourmailprovider.com"]
+```
+
+<Note>
+  MX records require `"proxy": "false"`. Cloudflare proxy does not handle mail traffic.
+</Note>
+
+## NS — name servers
+
+An `NS` record delegates DNS control of your subdomain to a set of name servers you manage. This is useful if you want to manage the DNS zone for your subdomain yourself using another provider. The value is an array of up to five name server hostnames.
+
+```json
+"NS": [
+  "ns1.myprovider.com",
+  "ns2.myprovider.com",
+  "ns3.myprovider.com",
+  "ns4.myprovider.com",
+  "ns5.myprovider.com"
+]
+```
+
+<Note>
+  NS records always bypass the Cloudflare proxy regardless of your `"proxy"` setting. When you use NS records, you take full responsibility for the DNS configuration of your subdomain — CreeperHUB has no technical control over it.
+</Note>
+
+## TXT — text records
+
+A `TXT` record stores arbitrary text data. It is commonly used for domain ownership verification (e.g., Google Search Console, email authentication). The value is an array of strings, allowing multiple entries.
+
+```json
+"TXT": ["google-site-verification=Xk9mN2pQ7rL3vW8yZ1"]
+```
+
+`TXT` is the only record type that can coexist alongside a `CNAME` for the same subdomain name.
+
+## SRV — service records
+
+An `SRV` record advertises the location of a specific service running on your subdomain. It is commonly used for Minecraft servers, VoIP services, and other non-HTTP protocols. The value is an array of objects, each describing one service endpoint.
+
+Each SRV entry has the following fields:
+
+| Field | Description |
+|---|---|
+| `content` | The service and protocol identifier (e.g., `_minecraft._tcp`). |
+| `priority` | Lower values are preferred when multiple SRV records exist. |
+| `weight` | Used to distribute load among records with the same priority. |
+| `ttl` | Time to live. Set to `"auto"` to let Cloudflare manage it. |
+| `port` | The port your service listens on. |
+| `target` | The hostname of the server running the service. |
+
+```json
+"SRV": [
+  {
+    "content": "_minecraft._tcp",
+    "priority": 10,
+    "weight": 60,
+    "ttl": "auto",
+    "port": 25565,
+    "target": "mc.myserver.net"
+  },
+  {
+    "content": "_minecraft._tcp",
+    "priority": 20,
+    "weight": 10,
+    "ttl": "auto",
+    "port": 25566,
+    "target": "mc2.myserver.net"
+  }
+]
+```
+
+<Tip>
+  For Minecraft servers, SRV records let you use a custom domain without requiring players to type the port number. Pair an `SRV` record with an `A` record pointing to your server's IP, and set `"proxy": "false"` — Cloudflare proxy does not work with game server traffic.
+</Tip>
+
+## Choosing the right record type
+
+<CardGroup cols={2}>
+  <Card title="Website or web app" icon="globe">
+    Use `A` or `AAAA` for servers you control directly, or `CNAME` for platforms like Netlify, Vercel, or GitHub Pages. Enable `"proxy": "true"` for HTTP/HTTPS traffic.
+  </Card>
+  <Card title="Minecraft or game server" icon="server">
+    Use `SRV` to advertise your server with a clean domain, paired with an `A` record. Set `"proxy": "false"`.
+  </Card>
+  <Card title="Email" icon="mail">
+    Use `MX` records pointing to your mail provider's servers. Set `"proxy": "false"`.
+  </Card>
+  <Card title="Self-managed DNS" icon="settings">
+    Use `NS` records to delegate the zone to your own provider. The proxy is bypassed automatically.
+  </Card>
+</CardGroup>

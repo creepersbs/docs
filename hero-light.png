@@ -1,0 +1,51 @@
+---
+title: "Transfer your Creepers subdomain to another account"
+description: "Move subdomain ownership to a new GitHub account. Requires Discord server membership and is processed manually by CreeperHUB after identity verification."
+---
+
+A transfer moves ownership of your subdomain from your current GitHub account to a different GitHub account. This is useful if you are handing off a project, changing GitHub usernames, or passing control to a collaborator. Transfers are handled manually by the CreeperHUB team — there is no self-service option. GitHub ownership is verified through your registration file, and Discord is used as an additional layer of identity confirmation.
+
+## Requirements before you request a transfer
+
+Before contacting support, make sure all of the following are true:
+
+- Your **Discord username** is listed in the `"discord"` field of your registration JSON file. If it is not, you need to add it via a Pull Request before requesting the transfer. See [Update DNS records](/guides/updating-records).
+- You are a member of the **official CreeperHUB Discord server**: [creepers.sbs/discord](https://creepers.sbs/discord).
+- The transfer request comes **explicitly from the current owner**. Transfers requested by anyone other than the current registered owner will not be processed.
+
+<Warning>
+  If you change your Discord username at any point, you must update the `"discord"` field in your registration file to match. An outdated Discord username will prevent identity verification and block any future transfer request.
+</Warning>
+
+## How to initiate a transfer
+
+<Steps>
+  <Step title="Add your Discord username to your registration file (if not already present)">
+    Open your registration JSON file in your fork and confirm the `"discord"` field in the `"owner"` block contains your current Discord username (e.g., `"@yourusername"`). If it is missing or outdated, update it and open a Pull Request to merge the change before proceeding.
+  </Step>
+
+  <Step title="Join the official CreeperHUB Discord server">
+    If you are not already a member, join the official server at [creepers.sbs/discord](https://creepers.sbs/discord). Membership is required for identity verification during the transfer process.
+  </Step>
+
+  <Step title="Contact support with your transfer details">
+    Reach out to CreeperHUB via one of the two official channels below. Include the following information in your message:
+
+    - The subdomain you want to transfer (e.g., `yourname.creepers.sbs`)
+    - Your current GitHub username
+    - The GitHub username of the new owner
+
+    **Contact options:**
+
+    - **Email:** [hello@creeperhub.net](mailto:hello@creeperhub.net)
+    - **Discord:** [creepers.sbs/discord](https://creepers.sbs/discord)
+  </Step>
+
+  <Step title="Wait for confirmation">
+    The CreeperHUB team will verify your identity using your GitHub account and your Discord username, then process the transfer. You will be notified once it is complete.
+  </Step>
+</Steps>
+
+<Note>
+  Discord is used as **additional identity verification** only — it does not replace GitHub ownership checks. The team will confirm that the GitHub account submitting the request matches the registered owner in the JSON file.
+</Note>

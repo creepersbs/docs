@@ -1,0 +1,40 @@
+---
+title: "Responsible disclosure and security policy for Creepers"
+description: "How to report security vulnerabilities in creepers.sbs infrastructure, what is in and out of scope, and which contact method to use for sensitive disclosures."
+---
+
+CreeperHUB takes security issues seriously and welcomes responsible disclosure from the community. If you discover a vulnerability affecting the creepers.sbs registry infrastructure or automation, please contact us privately before making any public disclosure. This page describes what is in scope, how to reach us, and what to expect.
+
+## Scope
+
+This security policy covers infrastructure and systems directly managed by CreeperHUB.
+
+**In scope:**
+
+- Repository infrastructure (the `creepersbs/register` GitHub repository and its configuration)
+- Automation and scripts used in the registration and review pipeline
+- DNS records and zones under direct CreeperHUB control
+
+**Out of scope:**
+
+- User-managed DNS zones (subdomain owners who control their own records)
+- External nameservers delegated to third-party providers via NS records
+- Content, services, or servers operated by individual subdomain owners
+
+<Info>
+  If you believe a subdomain owner is hosting abusive or illegal content, that is a takedown request rather than a security report. See the [contact page](/support/contact) for DMCA and legal channels.
+</Info>
+
+## How to report
+
+Use one of the following methods to report a security issue:
+
+- **Email:** [support@creeperhub.net](mailto:support@creeperhub.net)
+- **Contact form:** [creeperhub.net/contact](https://creeperhub.net/contact) — select Email or Discord as your reply method; Discord requires joining the official server
+- **High-risk or sensitive issues only:** Contact the maintainer directly via [@giocoliere on GitHub](https://github.com/giocoliere)
+
+<Warning>
+  Do not publicly disclose a security vulnerability — in a GitHub issue, social media post, or anywhere else — before contacting us privately. Public disclosure before a fix is in place puts users at risk and may prevent us from coordinating a response.
+</Warning>
+
+After you reach out, we will acknowledge your report and work with you on next steps. We do not have a formal bug bounty program, but we appreciate responsible disclosure and will credit contributors where appropriate.

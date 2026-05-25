@@ -1,0 +1,81 @@
+{
+  "projectType": "general",
+  "projectName": "Creepers Free Subdomain Registry",
+  "projectDescription": "A free subdomain registration service operated by CreeperHUB, letting developers, Minecraft players, and anyone get subdomains under creepers.sbs, creepers.cloud, creepers.pro, creepers.lol, and run-it.tech via GitHub Pull Requests.",
+  "theme": "palm",
+  "primaryColor": "#045630",
+  "lightColor": "#689c84",
+  "darkColor": "#91bf9b",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "available-domains"
+            ]
+          },
+          {
+            "group": "Registration Guide",
+            "pages": [
+              "guides/registering-a-subdomain",
+              "guides/dns-record-types",
+              "guides/spare-records",
+              "guides/cloudflare-proxy"
+            ]
+          },
+          {
+            "group": "Managing Your Subdomain",
+            "pages": [
+              "guides/updating-records",
+              "guides/transferring-a-subdomain",
+              "guides/removing-a-subdomain"
+            ]
+          },
+          {
+            "group": "Policies & Legal",
+            "pages": [
+              "policies/terms-of-service",
+              "policies/usage-limits",
+              "policies/restricted-names",
+              "policies/takedowns-and-blacklisting"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "support/faq",
+              "support/contact",
+              "support/security"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Free subdomains with no hidden fees or credit cards required",
+    "Multiple TLDs: creepers.sbs, creepers.cloud, creepers.pro, creepers.lol, run-it.tech",
+    "GitHub Pull Request-based registration workflow",
+    "DNS powered by Cloudflare, Gcore, and deSEC",
+    "Supports A, AAAA, CNAME, MX, NS, TXT, and SRV record types",
+    "Spare records for subdomain-within-subdomain configuration",
+    "Optional Cloudflare proxy protection",
+    "Up to 8 subdomains per account (2 per TLD)"
+  ],
+  "publicApiSurface": [
+    "domains/template.json — Single TLD registration template",
+    "domains/complete.template.json — Multi-TLD registration template",
+    "GitHub Pull Request workflow for new subdomain registration",
+    "GitHub Pull Request workflow for DNS record updates",
+    "GitHub Pull Request workflow for NS record changes",
+    "GitHub Issues for support and subdomain transfer requests",
+    "domains/reserved/ — Reserved subdomain names list",
+    "domains/blacklisted/ — Banned subdomain names list",
+    "domains/removed/ — Transparency ledger of removed domains"
+  ]
+}

@@ -1,0 +1,117 @@
+---
+title: "Cloudflare proxy settings for your Creepers subdomain"
+description: "The proxy field controls whether traffic routes through Cloudflare. Enable it for web apps; disable it for Minecraft servers, mail, and custom nameservers."
+---
+
+The `"proxy"` field in your registration file controls whether traffic to your subdomain passes through Cloudflare's network before reaching your server. This single boolean string — `"true"` or `"false"` — has a significant impact on which services work correctly behind your subdomain.
+
+## What the proxy does
+
+When `"proxy": "true"`, Cloudflare acts as an intermediary between visitors and your server:
+
+- **Hides your origin IP** — your server's real IP address is not exposed to the public.
+- **DDoS protection** — Cloudflare filters malicious traffic before it reaches your server.
+- **CDN caching** — static assets can be cached at Cloudflare's edge nodes, reducing load on your server.
+- **HTTPS enforcement** — Cloudflare can serve your site over HTTPS even if your server only speaks HTTP.
+
+When `"proxy": "false"`, the DNS record points directly to your server. There is no intermediary — clients connect straight to your IP.
+
+## When to enable the proxy
+
+Set `"proxy": "true"` when you are hosting a **standard website or web application** served over HTTP or HTTPS on port 80 or 443. This is the most common setup for personal sites, blogs, and web apps.
+
+```json
+{
+  "record": {
+    "A": ["198.51.100.10"]
+  },
+  "proxy": "true"
+}
+```
+
+## When to disable the proxy
+
+Set `"proxy": "false"` for any service that does not use standard HTTP/HTTPS, or that requires a direct connection to your server.
+
+<Tabs>
+  <Tab title="Minecraft servers">
+    Game servers communicate on ports that Cloudflare proxy does not support. Use DNS-only mode so players connect directly to your server.
+
+    ```json
+    {
+      "record": {
+        "A": ["198.51.100.50"],
+        "SRV": [
+          {
+            "content": "_minecraft._tcp",
+            "priority": 10,
+            "weight": 60,
+            "ttl": "auto",
+            "port": 25565,
+            "target": "mc.myserver.net"
+          }
+        ]
+      },
+      "proxy": "false"
+    }
+    ```
+  </Tab>
+  <Tab title="Mail servers">
+    Email delivery (SMTP) and retrieval (IMAP/POP3) do not work through the Cloudflare proxy. MX records require a direct connection.
+
+    ```json
+    {
+      "record": {
+        "MX": ["mx1.mymailprovider.com", "mx2.mymailprovider.com"]
+      },
+      "proxy": "false"
+    }
+    ```
+  </Tab>
+  <Tab title="Custom name servers">
+    NS records always bypass the proxy regardless of the `"proxy"` setting. Setting `"proxy": "false"` makes this explicit and avoids confusion.
+
+    ```json
+    {
+      "record": {
+        "NS": [
+          "ns1.myprovider.com",
+          "ns2.myprovider.com"
+        ]
+      },
+      "proxy": "false"
+    }
+    ```
+  </Tab>
+  <Tab title="Another Cloudflare account">
+    A `CNAME` pointing to a hostname on another Cloudflare account or a Cloudflare Worker does not work with `"proxy": "true"`. Disable the proxy for these targets.
+
+    ```json
+    {
+      "record": {
+        "CNAME": "my-worker.my-account.workers.dev"
+      },
+      "proxy": "false"
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Summary
+
+| Service type | Proxy setting |
+|---|---|
+| Static website or web app (HTTP/HTTPS) | `"true"` |
+| Minecraft or other game server | `"false"` |
+| Mail server (MX records) | `"false"` |
+| Custom name servers (NS records) | `"false"` (always bypassed) |
+| Non-HTTP ports (e.g., 25565, 587, 3306) | `"false"` |
+| CNAME to another Cloudflare account/Worker | `"false"` |
+
+<Warning>
+  Cloudflare proxy does not work with the majority of non-web services. If you are unsure whether your service is compatible, set `"proxy": "false"`. You can always open a new Pull Request to change the setting later.
+</Warning>
+
+<Note>
+  NS records always bypass the Cloudflare proxy regardless of the `"proxy"` value you set. When you delegate your DNS zone to custom name servers, Cloudflare has no control over the traffic flowing through that zone.
+</Note>

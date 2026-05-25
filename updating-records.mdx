@@ -1,0 +1,116 @@
+---
+title: "How to register a subdomain on Creepers step by step"
+description: "Fork the repo, create a JSON file with your DNS records, and open a Pull Request. Covers every required field and the PR checklist for first-time registrations."
+---
+
+Registering a subdomain on Creepers is entirely GitHub-based. You fork the repository, add a single JSON file to the `/domains` folder describing your project and DNS records, then open a Pull Request. A CreeperHUB team member reviews it manually, and once merged, your subdomain is live. There is no web panel or account to create — GitHub is the interface.
+
+## The JSON file structure
+
+Every subdomain registration is a `.json` file placed in `/domains`. The file name must exactly match the `"subdomain"` value inside it. For example, if you want `myapp.creepers.sbs`, the file must be named `myapp.json` and contain `"subdomain": "myapp"`.
+
+Below is a walkthrough of every field in the template.
+
+### Top-level fields
+
+| Field | Required | Description |
+|---|---|---|
+| `title` | Yes | The name of your website, project, or server. |
+| `description` | Yes | A short summary of what the subdomain is for. |
+| `domain` | Yes | The TLD you are registering under. Choose one: `creepers.sbs`, `creepers.cloud`, `creepers.pro`, `creepers.lol`, or `run-it.tech`. |
+| `subdomain` | Yes | Your chosen subdomain name. Must match the file name exactly (without `.json`). |
+| `country_code` | Yes | ISO 2-letter country code for the region your service targets, or `"none"` if not applicable. Currently stored as metadata only — subdomains are not divided by region yet. |
+| `proxy` | Yes | `"true"` to enable Cloudflare proxy, or `"false"` for DNS-only mode. See [Cloudflare proxy guide](/guides/cloudflare-proxy). |
+
+### The `owner` object
+
+The `owner` block identifies who owns the subdomain. This information is used to contact you if action needs to be taken on your subdomain.
+
+| Field | Required | Description |
+|---|---|---|
+| `github_user` | Yes | The full URL to your GitHub profile (e.g., `https://github.com/yourusername`). Must be the account submitting the PR. |
+| `email` | Yes | An email address where you can be reached for service-related notices. |
+| `discord` | No | Your Discord username (e.g., `@yourusername`). Required if you ever need to transfer the subdomain. You must be a member of the official CreeperHUB Discord server. |
+
+### The `record` object
+
+The `record` block contains your DNS records. Include only the record types you need — you do not have to fill in all of them. For a full reference of each supported record type and its syntax, see [DNS record types](/guides/dns-record-types).
+
+## Complete example
+
+The following is a filled-in JSON file for a developer portfolio site on `creepers.sbs`.
+
+```json alexdev.json
+{
+  "title": "Alex Dev Portfolio",
+  "description": "Personal developer portfolio showcasing open-source projects and a blog.",
+  "domain": "creepers.sbs",
+  "subdomain": "alexdev",
+  "country_code": "gb",
+  "owner": {
+    "github_user": "https://github.com/alexdev",
+    "email": "alex@alexdev.dev",
+    "discord": "@alexdev.codes"
+  },
+  "record": {
+    "A": ["198.51.100.42"],
+    "TXT": ["google-site-verification=Xk9mN2pQ7rL3vW8yZ1"]
+  },
+  "proxy": "true"
+}
+```
+
+<Note>
+  If you want to register the same subdomain name across multiple TLDs in a single Pull Request, use the `complete.template.json` format. Each additional TLD adds numbered fields: `"domain_2"`, `"record_2"`, `"proxy_2"`, and so on.
+</Note>
+
+## Submitting the Pull Request
+
+<Steps>
+  <Step title="Fork and star the repository">
+    Go to [creepersbs/register](https://github.com/creepersbs/register) on GitHub. Star the repo to follow updates, then fork it to create your own copy.
+  </Step>
+
+  <Step title="Add your JSON file">
+    In your fork, navigate to the `/domains` folder and create your file. Name it exactly after your desired subdomain — `yourname.json` for `yourname.creepers.sbs`. Paste in your filled-out JSON and remove all parenthetical comments from the template so the file is valid JSON.
+
+    <Warning>
+      Creepers enforces a **Zero-Manual-Fix Policy**. If your file has syntax errors, misplaced fields, or is in the wrong directory, your PR will be rejected and you will need to fix and resubmit it yourself. Use [JSONLint](https://jsonlint.com/) to validate before submitting.
+    </Warning>
+  </Step>
+
+  <Step title="Open the Pull Request">
+    In your fork, click **Contribute** then **Open Pull Request**. The PR description will be pre-filled with the official template. Fill in every required section:
+
+    - **Type of PR** — check "New Subdomain Request"
+    - **Your information** — GitHub username, email, and optionally your Discord username
+    - **Subdomain request details** — the full subdomain you want, the TLD, and any custom NS records
+    - **Description** — explain the purpose of the subdomain and any existing infrastructure
+    - **Confirmation checkboxes** — confirm you have read the Terms of Service and that all information is accurate
+
+    All three confirmation checkboxes must be checked before the PR can be reviewed.
+  </Step>
+
+  <Step title="Wait for review">
+    A CreeperHUB team member will review your PR manually. Approval typically takes **24 hours to one week**. Once merged, your subdomain is live.
+
+    Do not point to placeholder or test IPs such as `1.1.1.1`, `0.0.0.0`, or `localhost`. Your service must already be live and reachable at the time of submission.
+  </Step>
+</Steps>
+
+## Things to double-check before submitting
+
+<CardGroup cols={2}>
+  <Card title="File name matches subdomain" icon="file">
+    `yourname.json` must contain `"subdomain": "yourname"` — any mismatch will result in rejection.
+  </Card>
+  <Card title="Valid JSON" icon="code">
+    Remove all parenthetical comments from the template. Validate with [JSONLint](https://jsonlint.com/) before opening the PR.
+  </Card>
+  <Card title="File is in /domains" icon="folder">
+    The file must be directly inside `/domains`, not in a subfolder. Incorrect placement will not be corrected by the team.
+  </Card>
+  <Card title="Service is live" icon="globe">
+    Your subdomain must point to a real, reachable service — not a placeholder IP or localhost.
+  </Card>
+</CardGroup>
