@@ -1,33 +1,89 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+---
+title: "Quickstart: register your first Creepers subdomain"
+description: "Step-by-step guide to registering a free subdomain on Creepers: fork the repo, add a JSON file with your DNS records, and open a Pull Request."
+---
 
-# Documentation project instructions
+This guide walks you through registering a subdomain from start to finish. The entire process happens on GitHub: you add a JSON file describing your DNS records and open a Pull Request for review. No account signup, no payment details.
 
-## About this project
+<Steps>
+  <Step title="Fork and star the repository">
+    Go to [creepersbs/register](https://github.com/creepersbs/register) on GitHub. Click **Star** to follow updates, then click **Fork** to create your own copy of the repository.
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Run `mint dev` to preview locally
-- Run `mint broken-links` to check links
+    You will make all your changes in your fork and then open a Pull Request back to the main repository.
+  </Step>
 
-## Terminology
+  <Step title="Create your domain file">
+    In your fork, navigate to the `/domains` folder and create a new file. The file name must exactly match the subdomain you want — for example, if you want `myproject.creepers.sbs`, create `myproject.json`.
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+    Use the template below as your starting point. Delete every comment (the text in parentheses) before submitting — the file must be valid JSON.
 
-## Style preferences
+    ```json myproject.json
+    {
+      "title": "My Project",
+      "description": "A short description of your website or server.",
+      "domain": "creepers.sbs",
+      "subdomain": "myproject",
+      "country_code": "none",
+      "owner": {
+        "github_user": "https://github.com/yourusername",
+        "email": "you@example.com",
+        "discord": "optional"
+      },
+      "record": {
+        "A": ["203.0.113.10"],
+        "TXT": ["example-verification=abc123"]
+      },
+      "proxy": "false"
+    }
+    ```
 
-{/* Add any project-specific style rules below */}
+    **Key fields explained:**
 
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
+    - `"domain"` — choose one of the available TLDs: `creepers.sbs`, `creepers.cloud`, `creepers.pro`, `creepers.lol`, or `run-it.tech`.
+    - `"subdomain"` — must match the file name exactly (without `.json`).
+    - `"country_code"` — set to `"none"` unless you need a regional sub-prefix (e.g., `en.yourname.creepers.sbs`). Currently used as additional metadata.
+    - `"record"` — include only the record types you need. Supported types: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, `SRV`.
+    - `"proxy"` — set to `"true"` to enable Cloudflare proxy protection, or `"false"` to use DNS-only mode.
 
-## Content boundaries
+    <Warning>
+      A `CNAME` record cannot coexist with any other record type of the same name (except `TXT`). If you need both a `CNAME` and other record types, use spare records — see the [spare records guide](/guides/spare-records).
+    </Warning>
 
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+    <Note>
+      Cloudflare proxy (`"proxy": "true"`) does not work with services hosted on another Cloudflare account or Cloudflare Workers. Use `"proxy": "false"` for those.
+    </Note>
+  </Step>
+
+  <Step title="Validate your JSON">
+    Before opening a Pull Request, paste your file contents into [JSONLint](https://jsonlint.com/) and confirm it shows **Valid JSON**. A single misplaced comma or missing quote will cause your PR to be rejected.
+
+    <Warning>
+      Creepers enforces a **Zero-Manual-Fix Policy**. If your JSON has syntax errors, your PR will be rejected and you will need to fix it yourself and resubmit. The team will not correct formatting on your behalf.
+    </Warning>
+  </Step>
+
+  <Step title="Open a Pull Request">
+    In your fork on GitHub, click **Contribute** then **Open Pull Request**. Fill in the PR description using the provided template, check all boxes in the checklist, and confirm you agree to the [Terms of Service](/policies/terms-of-service).
+
+    Make sure:
+    - Your JSON file is in the `/domains` folder (not in a subfolder).
+    - The file name matches your `"subdomain"` value exactly.
+    - You are not pointing to placeholder IPs (`1.1.1.1`, `0.0.0.0`, `localhost`) — your service must be live and reachable.
+  </Step>
+
+  <Step title="Wait for approval">
+    A CreeperHUB team member will review your PR manually. Approval typically happens within **24 hours to one week**. Once merged, your subdomain is live.
+
+    If your PR is rejected, the reviewer will explain why. Common reasons include invalid JSON, placeholder IPs, or a name that appears on the [restricted names list](/policies/restricted-names).
+  </Step>
+</Steps>
+
+## Registering multiple TLDs at once
+
+If you want the same subdomain name across several TLDs simultaneously (e.g., `myproject.creepers.sbs` and `myproject.creepers.cloud`), use the `complete.template.json` format instead of the single-TLD template.
+
+<Tip>
+  The complete template lets you configure different DNS records for each TLD in a single file and a single Pull Request. See [complete.template.json](https://github.com/creepersbs/register/blob/main/domains/complete.template.json) for the full format. Each additional TLD uses a numbered suffix: `"domain_2"`, `"record_2"`, `"proxy_2"`, and so on.
+</Tip>
+
+Check the [usage limits](/policies/usage-limits) before registering multiple TLDs — you may register up to 2 subdomains per TLD, with a maximum of 8 subdomains in total.

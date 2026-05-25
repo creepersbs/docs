@@ -1,0 +1,56 @@
+---
+title: "Creepers subdomain registry: frequently asked questions"
+description: "Answers on approval timelines, usage limits, PR rejections, Minecraft server setup, custom nameservers, subdomain transfers, and the Zero-Manual-Fix Policy."
+---
+
+creepers.sbs is a free subdomain registry operated by CreeperHUB. Registration is done by submitting a Pull Request to the GitHub repository, and subdomains are approved manually. The questions below cover the most common topics users ask about before and after registration.
+
+<AccordionGroup>
+  <Accordion title="How long until my subdomain goes live?">
+    After your Pull Request is approved, subdomains typically go live within **24 hours to one week**. Approval is manual, so timing depends on reviewer availability. Make sure your PR follows the template exactly to avoid delays.
+  </Accordion>
+
+  <Accordion title="Is it really free?">
+    Yes. creepers.sbs charges nothing. There are no hidden fees, no credit cards, and no paid tiers. The service is operated by CreeperHUB as a free public resource for developers, Minecraft players, and anyone who wants a personalized online presence.
+  </Accordion>
+
+  <Accordion title="Can I register the same name on multiple TLDs?">
+    Yes. You can register the same subdomain name across multiple TLDs (`.sbs`, `.cloud`, `.pro`, `.lol`). Each TLD counts as a separate registration. See the usage limits below for how many you can hold at once.
+  </Accordion>
+
+  <Accordion title="What if my PR is rejected?">
+    Fix the issue described in the rejection and resubmit. Common causes of rejection include:
+
+    - **JSON syntax errors** — validate your file at [JSONLint](https://jsonlint.com/) before submitting
+    - **Reserved or restricted names** — check the [reserved names list](https://github.com/creepersbs/register/tree/main/domains/reserved/list.json)
+    - **Placeholder IPs** — pointing to `localhost`, `0.0.0.0`, `1.1.1.1`, or similar is not allowed; the service must already exist
+
+    CreeperHUB enforces a Zero-Manual-Fix Policy, meaning reviewers will not edit your file for you. The fix is always the requester's responsibility.
+  </Accordion>
+
+  <Accordion title="How many subdomains can I have?">
+    Standard users may hold up to **8 subdomains total** — a maximum of **2 per TLD** across `.sbs`, `.cloud`, `.pro`, and `.lol`. `run-it.tech` is also available; its limit is not separately specified in the ToS so treat it consistently with the others.
+
+    **Legacy users** (those who successfully submitted a PR before 02-24-2026 CET) may retain up to **3 names** for the original TLDs (`.sbs` and `.cloud`), for a possible total of 10. Legacy allocations are lost permanently if the domains are removed for Terms violations.
+
+    <Note>Using multiple accounts to exceed these limits is prohibited under the Anti-Alt Account Policy.</Note>
+  </Accordion>
+
+  <Accordion title="Can I use custom nameservers?">
+    Yes. You can request NS records in your registration file to delegate your subdomain to your own DNS provider. When custom NS records are in use, CreeperHUB has no technical control over your DNS configuration, and all responsibility for that zone rests with you.
+  </Accordion>
+
+  <Accordion title="Can I host a Minecraft server?">
+    Yes. To point a subdomain at a Minecraft server, use a combination of **SRV** and **A** records in your registration file. Set `proxy` to `false` when using SRV records, as proxied mode is incompatible with raw TCP connections used by Minecraft.
+  </Accordion>
+
+  <Accordion title="What is the Zero-Manual-Fix Policy?">
+    The Zero-Manual-Fix Policy means that Pull Requests containing errors are **rejected outright** rather than corrected by a reviewer. Reviewers will not move files, fix JSON, or adjust your DNS records on your behalf.
+
+    You are solely responsible for submitting a correctly formatted PR. Use the official templates and validate your JSON before opening a PR.
+  </Accordion>
+
+  <Accordion title="Can I transfer my subdomain to another account?">
+    Yes, subdomain transfers are supported. To initiate a transfer, the current owner must contact CreeperHUB through Discord (the official server is required for identity verification). See the [transfer guide](/guides/transferring-a-subdomain) for the full requirements and steps.
+  </Accordion>
+</AccordionGroup>

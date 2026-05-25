@@ -1,49 +1,77 @@
----
-title: "Contact CreeperHUB: support channels and when to use them"
-description: "The right support channel for registration issues, subdomain transfers, DMCA notices, and security reports — GitHub Issues, Discord, email, and direct contact."
----
-
-CreeperHUB offers several ways to get help depending on the nature of your request. Choose the channel that best matches your situation — using the right one will get you a faster response. Note that the Discord contact form option requires you to join the official server before a response can be sent.
-
-<CardGroup cols={2}>
-  <Card
-    title="GitHub Issues"
-    icon="github"
-    href="https://github.com/creepersbs/register/issues/new/choose"
-  >
-    Open a public issue for registration questions, PR feedback, or general bugs in the repository.
-  </Card>
-  <Card
-    title="Contact Form"
-    icon="envelope"
-    href="https://creeperhub.net/contact"
-  >
-    Submit a private request via the CreeperHUB contact form. Choose Email or Discord as your preferred reply method.
-  </Card>
-  <Card
-    title="Discord Server"
-    icon="discord"
-    href="https://creepers.sbs/discord"
-  >
-    Join the official creepers.sbs Discord server for real-time community support and transfer requests.
-  </Card>
-  <Card
-    title="Security / DMCA"
-    icon="shield"
-    href="https://github.com/giocoliere"
-  >
-    Contact the maintainer directly for high-risk security issues, DMCA notices, and sensitive takedown requests.
-  </Card>
-</CardGroup>
-
-## Which channel should I use?
-
-**General questions** — Open a [GitHub Issue](https://github.com/creepersbs/register/issues/new/choose). This is the best place for questions about registration format, PR rejections, and policy clarifications. Issues are public, so answers benefit the whole community.
-
-**Transfer requests** — Contact CreeperHUB via the [Discord server](https://creepers.sbs/discord) or the [contact form](https://creeperhub.net/contact). Transfers require identity verification through Discord, so the current owner must be a member of the official server and have their Discord username listed in the registration file. Email alone is not sufficient.
-
-**DMCA and legal requests** — Use the [maintainer's GitHub profile](https://github.com/giocoliere) to initiate contact directly. Third-party takedown requests must include proof of identity and standing; anonymous or unverifiable requests will not receive a response.
-
-<Note>
-  The contact form at creeperhub.net requires you to select either Email or Discord as your contact method. If you choose Discord, you must join the [official server](https://creepers.sbs/discord) first, or a reply cannot be sent.
-</Note>
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Creepers Free Subdomain Registry",
+  "theme": "palm",
+  "colors": {
+    "primary": "#045630",
+    "light": "#689c84",
+    "dark": "#91bf9b"
+  },
+  "favicon": "https://media.brand.dev/f2886f7a-9caa-40e7-bfd1-88a5bfb229fa.png",
+  "logo": {
+    "light": "https://media.brand.dev/6c1276f4-2d55-462e-96b2-cc18b14046f5.svg",
+    "dark": "https://media.brand.dev/6c1276f4-2d55-462e-96b2-cc18b14046f5.svg"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/creepersbs/register"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/creepersbs/register"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "available-domains"
+            ]
+          },
+          {
+            "group": "Registration Guide",
+            "pages": [
+              "guides/registering-a-subdomain",
+              "guides/dns-record-types",
+              "guides/spare-records",
+              "guides/cloudflare-proxy"
+            ]
+          },
+          {
+            "group": "Managing Your Subdomain",
+            "pages": [
+              "guides/updating-records",
+              "guides/transferring-a-subdomain",
+              "guides/removing-a-subdomain"
+            ]
+          },
+          {
+            "group": "Policies & Legal",
+            "pages": [
+              "policies/terms-of-service",
+              "policies/usage-limits",
+              "policies/restricted-names",
+              "policies/takedowns-and-blacklisting"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "support/faq",
+              "support/contact",
+              "support/security"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

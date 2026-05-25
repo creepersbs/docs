@@ -1,59 +1,55 @@
----
-title: "Available TLDs — all five Creepers domains explained"
-description: "Creepers offers five free TLDs: creepers.sbs, creepers.cloud, creepers.pro, creepers.lol, and run-it.tech. Each must be registered separately with its own PR."
----
+# Mintlify Starter Kit
 
-Creepers currently offers five top-level domains (TLDs) for free subdomain registration. You can use any combination of them, subject to the [usage limits](/policies/usage-limits). Each TLD requires its own registration — claiming a name on one does not automatically reserve it on the others.
+Use the starter kit to get your docs deployed and ready to customize.
 
-## Available TLDs
+Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
 
-<CardGroup cols={2}>
-  <Card title="creepers.sbs" icon="globe">
-    The original Creepers TLD. "sbs" stands for "side by side." A general-purpose domain suitable for any type of website, project, or server.
-  </Card>
-  <Card title="creepers.cloud" icon="cloud">
-    A good fit for web applications, cloud-hosted services, and anything deployed to a cloud provider. Works for any project type.
-  </Card>
-  <Card title="creepers.pro" icon="briefcase">
-    Suitable for professional portfolios, developer tools, or projects where a polished presentation matters.
-  </Card>
-  <Card title="creepers.lol" icon="face-smile">
-    A lighthearted option for fun, experimental, or community-oriented projects.
-  </Card>
-  <Card title="run-it.tech" icon="server">
-    Oriented toward servers, applications, and infrastructure. Especially fitting for Minecraft servers, game servers, bots, and other always-on services.
-  </Card>
-</CardGroup>
+- Guide pages
+- Navigation
+- Customizations
+- API reference pages
+- Use of popular components
 
-<Info>
-  Registering `yourname.creepers.sbs` does **not** reserve `yourname.creepers.cloud` or any other TLD. If you want the same name across multiple TLDs, you must register each one separately — either in separate Pull Requests or all at once using the [complete template](https://github.com/creepersbs/register/blob/main/domains/complete.template.json).
-</Info>
+**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
 
-## Choosing a TLD
+## AI-assisted writing
 
-Any TLD works for any type of project — there are no technical restrictions on which one you pick. That said, here are some practical guidelines:
+Set up your AI coding tool to work with Mintlify:
 
-- **Websites and portfolios** — any TLD works. Pick the one that fits your brand or sounds right.
-- **Servers and applications** — `run-it.tech` was designed with this use case in mind, but `creepers.cloud` or `creepers.pro` are equally valid.
-- **Minecraft servers** — `run-it.tech` or `creepers.sbs` are popular choices. You can use SRV records on any TLD to point players to your server port.
-- **Fun or experimental projects** — `creepers.lol` suits projects where a serious-sounding domain would feel out of place.
+```bash
+npx skills add https://mintlify.com/docs
+```
 
-If you are unsure, start with `creepers.sbs` — it is the most established TLD in the registry.
+This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
 
-## Usage limits
+See the [AI tools guides](/ai-tools) for tool-specific setup.
 
-<Note>
-  Each account may register up to **2 subdomains per TLD**, with a maximum of **8 subdomains total** across all TLDs. See [usage limits](/policies/usage-limits) for the full breakdown, including legacy user allowances and how limits are applied when a name is shared across TLDs.
-</Note>
+## Development
 
-The current per-account limit is:
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
 
-| TLD | Max subdomains |
-|-----|---------------|
-| creepers.sbs | 2 |
-| creepers.cloud | 2 |
-| creepers.pro | 2 |
-| creepers.lol | 2 |
-| run-it.tech | 2 |
+```
+npm i -g mint
+```
 
-When the same subdomain name is registered across multiple TLDs, each registration counts separately toward its respective TLD limit. Limits may change over time — check the [changelogs](https://github.com/creepersbs/register/blob/main/changelogs) to stay up to date.
+Run the following command at the root of your documentation, where your `docs.json` is located:
+
+```
+mint dev
+```
+
+View your local preview at `http://localhost:3000`.
+
+## Publishing changes
+
+Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+
+## Need help?
+
+### Troubleshooting
+
+- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
+- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+
+### Resources
+- [Mintlify documentation](https://mintlify.com/docs)

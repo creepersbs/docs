@@ -1,60 +1,33 @@
----
-title: "Subdomain registration limits per Creepers account"
-description: "Standard limit is 2 subdomains per TLD (8 total). Legacy users pre-02-24-2026 may hold up to 10. Includes anti-alt-account policy and per-TLD breakdown."
----
+> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
+> For Mintlify product knowledge (components, configuration, writing standards),
+> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
 
-To keep the registry fair and sustainable, CH enforces per-account limits on how many subdomains you can hold across all available TLDs. These limits apply regardless of how many GitHub accounts you use — creating alternate accounts to bypass them is a violation of the Terms of Service.
+# Documentation project instructions
 
-## Standard limits
+## About this project
 
-Each account is entitled to **2 subdomains per TLD**, for a maximum of **8 subdomains** across all four TLDs.
+- This is a documentation site built on [Mintlify](https://mintlify.com)
+- Pages are MDX files with YAML frontmatter
+- Configuration lives in `docs.json`
+- Run `mint dev` to preview locally
+- Run `mint broken-links` to check links
 
-| TLD | Max subdomains |
-|-----|----------------|
-| creepers.sbs | 2 |
-| creepers.cloud | 2 |
-| creepers.pro | 2 |
-| creepers.lol | 2 |
-| **Total** | **8** |
+## Terminology
 
-<Info>
-  Limits may change. Check the [changelogs](https://github.com/creepersbs/register/blob/main/changelogs) to stay up to date.
-</Info>
+{/* Add product-specific terms and preferred usage */}
+{/* Example: Use "workspace" not "project", "member" not "user" */}
 
-## Registrations are per-TLD, not cross-TLD
+## Style preferences
 
-Claiming `myname.creepers.sbs` does **not** automatically reserve `myname.creepers.cloud`, `myname.creepers.pro`, or `myname.creepers.lol`. Each TLD is treated as a separate registration. If you want the same name on multiple TLDs, you must submit a separate PR for each one (subject to the per-TLD limit).
+{/* Add any project-specific style rules below */}
 
-## Legacy users (pre 02-24-2026)
+- Use active voice and second person ("you")
+- Keep sentences concise — one idea per sentence
+- Use sentence case for headings
+- Bold for UI elements: Click **Settings**
+- Code formatting for file names, commands, paths, and code references
 
-If you successfully had a PR merged **before 02-24-2026 (CET)**, you qualify for a grandfathering exception on the two original TLDs.
+## Content boundaries
 
-| TLD | Legacy max | Standard max |
-|-----|-----------|--------------|
-| creepers.sbs | 3 | 2 |
-| creepers.cloud | 3 | 2 |
-| creepers.pro | 2 | 2 |
-| creepers.lol | 2 | 2 |
-| **Legacy total** | **10** | **8** |
-
-<Warning>
-  If any of your legacy subdomains are removed due to a ToS violation or a valid third-party takedown request, you **cannot recover the legacy slot**. Once removed, that TLD reverts to the standard 2-subdomain limit for your account — permanently.
-</Warning>
-
-## Anti-alt-account policy
-
-Creating multiple GitHub accounts to claim more subdomains than your limit allows is strictly prohibited.
-
-<AccordionGroup>
-  <Accordion title="Account scrutiny">
-    CH actively reviews accounts that submit PRs. Accounts that appear to have been created solely for the purpose of claiming subdomains on this registry — with no other activity — will have their requests cancelled.
-  </Accordion>
-
-  <Accordion title="Community impact">
-    Fraudulent or duplicate requests create significant delays in the review queue for every user. Accounts found to be evading limits may be blacklisted, affecting all subdomains associated with that identity.
-  </Accordion>
-</AccordionGroup>
-
-<Note>
-  If you believe your account was incorrectly flagged, contact CH via [hello@creeperhub.net](mailto:hello@creeperhub.net) or the [official Discord server](https://creepers.sbs/discord).
-</Note>
+{/* Define what should and shouldn't be documented */}
+{/* Example: Don't document internal admin features */}
