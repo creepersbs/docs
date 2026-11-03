@@ -9,7 +9,7 @@ creepers.sbs currently offers five top-level domains (TLDs) for free subdomain r
 
 <CardGroup cols={2}>
   <Card title="creepers.sbs" icon="globe">
-    The original Creepers TLD. "sbs" stands for "side by side." A general-purpose domain suitable for any type of website, project, or server.
+    The original [creepers.sbs](https://creepers.sbs) TLD. "sbs" stands for "side by side." A general-purpose domain suitable for any type of website, project, or server.
   </Card>
 
   <Card title="creepers.cloud" icon="cloud">
@@ -24,20 +24,24 @@ creepers.sbs currently offers five top-level domains (TLDs) for free subdomain r
     A lighthearted option for fun, experimental, or community-oriented projects.
   </Card>
 
+  <Card title="a-dev.sbs" icon="dev">
+    Useful for personal dev portfolios, websites, blogs, communities and more. <br />
+  </Card>
+
   <Card title="run-it.tech (only 1 year)" icon="server">
     Oriented toward servers, applications, and infrastructure. Especially fitting for Minecraft servers, game servers, bots, and other always-on services.
   </Card>
 </CardGroup>
 
 <Info>
-  Registering `yourname.creepers.sbs` does **not** reserve `yourname.creepers.cloud` or any other TLD. If you want the same name across multiple TLDs, you must register each one separately — either in separate Pull Requests or all at once using the [complete template](https://github.com/creepersbs/register/blob/main/domains/complete.template.json).
+  Registering `yourname.creepers.sbs` does reserve `yourname.creepers.cloud` or any other TLD. But if you want the same name across multiple TLDs, you must register each one as the configuration is not shared across every subdomain automatically. You can do it either in separate Pull Requests or all at once using the [complete template](https://github.com/creepersbs/register/blob/main/domains/complete.template.json).
 </Info>
 
 ## Choosing a TLD
 
 Any TLD works for any type of project — there are no technical restrictions on which one you pick. That said, here are some practical guidelines:
 
-- **Websites and portfolios** — any TLD works. Pick the one that fits your brand or sounds right.
+- **Websites and portfolios** — any TLD works. Pick the one that fits your brand or sounds right, could be `a-dev.sbs` as well as any other domain.
 - **Servers and applications** — `run-it.tech` was designed with this use case in mind, but `creepers.cloud` or `creepers.pro` are equally valid.
 - **Minecraft servers** — `run-it.tech` or `creepers.sbs` are popular choices. You can use SRV records on any TLD to point players to your server port.
 - **Fun or experimental projects** — `creepers.lol` suits projects where a serious-sounding domain would feel out of place.
@@ -52,12 +56,13 @@ If you are unsure, start with `creepers.sbs` — it is the most established TLD 
 
 The current per-account limit is:
 
-| TLD | Max subdomains |
-| --- | --- |
-| creepers.sbs | 2 |
-| creepers.cloud | 2 |
-| creepers.pro | 2 |
-| creepers.lol | 2 |
-| run-it.tech | 1 (temp) |
+| TLD | Max subdomains | Max subdomains (og users) |
+| --- | --- | --- |
+| creepers.sbs | 2 | 3 |
+| creepers.cloud | 2 | 3 |
+| creepers.pro | 2 | 2 |
+| creepers.lol | 2 | 2 |
+| a-dev.sbs | 2 | 2 |
+| run-it.tech | 1 (temp) | 1 (temp) |
 
 When the same subdomain name is registered across multiple TLDs, each registration counts separately toward its respective TLD limit. Limits may change over time — check the [changelogs](https://github.com/creepersbs/register/blob/main/changelogs) to stay up to date.

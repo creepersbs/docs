@@ -1,7 +1,9 @@
 ---
-title: "DNS record types supported in creepers.sbs registrations"
-description: "Reference for every DNS record type in your creepers.sbs registration file: A, AAAA, CNAME, MX, NS, TXT, and SRV — with JSON examples and usage guidance."
+title: "DNS record types supported in Creepers registrations"
+description: "Reference for every DNS record type in your registration file: A, AAAA, CNAME, MX, NS, TXT, SRV and RED — with JSON examples and usage guidance."
 ---
+
+import SnippetIntro from '/snippets/snippet-intro.mdx';
 
 [creepers.sbs](http://creepers.sbs) supports seven DNS record types in the `"record"` object of your registration file: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `TXT`, and `SRV`. You only need to include the types relevant to your use case — leave out any you do not need. Each type has a specific value format described below.
 
@@ -116,6 +118,46 @@ Each SRV entry has the following fields:
 <Tip>
   For Minecraft servers, SRV records let you use a custom domain without requiring players to type the port number. Pair an `SRV` record with an `A` record pointing to your server's IP, and set `"proxy": "false"` — Cloudflare proxy does not work with game server traffic.
 </Tip>
+
+# RED - URL forwarding
+
+A `RED` record is not like every other record as it officially doesn't exists and it's a simple way to use URL forwarding, known also as "URL redirecting".<br />It's an url forward method I added to make redirecting simple: put RED as record type (which stands for 'redirect') and the http/https address you want the user to be redirected to. 
+
+<Card title="NOTICE" type="warning" color="#F59E0B" icon="brake-warning">
+  It works only for the following domains:
+
+  - [creepers.sbs](https://creepers.sbs)
+  - [creepers.cloud](https://creepers.cloud)
+  - [creepers.pro](https://creepers.pro)
+  - [a-dev.sbs](https://a-dev.sbs)
+</Card>
+
+<AccordionGroup>
+  <Accordion title="Personalization">
+    You can add multiple type of redirects, such as:
+
+    - 301
+    - 302
+    - 307
+    - masked <br />
+  </Accordion>
+
+  <Accordion title="Example as `Standalone`">
+    ```json
+    "RED": ["masked", "https://linktr.ee/..." ]
+    ```
+  </Accordion>
+
+  <Accordion title="Example as `Nested subdomain`">
+    ```json
+    "spare_record_4": [ "RED", 
+    					"301",
+     					"discord (discord.complete.template.creepers.sbs)",
+                			"https://discord.gg/...."
+    					]
+    ```
+  </Accordion>
+</AccordionGroup>
 
 ## Choosing the right record type
 
