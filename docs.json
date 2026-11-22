@@ -91,7 +91,7 @@
   },
   "description": "Official creepers.sbs Documentation, find out how to register your subdomain",
   "banner": {
-    "content": "[NEW **RED** RECORD, YOU CAN NOW USE THIS URL REDIRECT HOWEVER YOU LIKE (CLICK HERE)](https://docs.creepers.sbs/guides/dns-record-types#red-url-forwarding)",
+    "content": "[NEW **RED** RECORD, YOU CAN NOW USE THIS URL REDIRECT HOWEVER YOU LIKE (CLICK HERE)](/guides/dns-record-types#red-url-forwarding)",
     "type": "info",
     "color": {
       "light": "#055121",
